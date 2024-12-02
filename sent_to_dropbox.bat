@@ -11,4 +11,4 @@ curl -X POST https://content.dropboxapi.com/2/files/upload ^
 --header "Content-Type: application/octet-stream" ^
 --data-binary @"arbo.txt"
 
-pause
+
